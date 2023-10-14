@@ -5,6 +5,13 @@ import type { Middleware } from 'koa'
 const ajv = new Ajv2020({ allErrors: true })
 addFormats(ajv)
 
+/**
+ * This middleware generator accepts json-schema and returns Middleware
+ * It checks that request body matches the given schema,
+ * and responds with 400, and validation errors if schema is not satisfied
+ * The response data detail contains raw validation errors that ajv provides
+ * maybe TODO: return nicer (more human-readable) validation errors
+ */
 export const validateBody =
   (schema: Parameters<typeof ajv.compile>[0]): Middleware =>
   async (ctx, next) => {
@@ -15,6 +22,9 @@ export const validateBody =
     else {
       ctx.response.status = 400
       ctx.response.type = 'json'
-      ctx.response.body = validate.errors
+      ctx.response.body = {
+        message: 'Invalid data',
+        detail: validate.errors,
+      }
     }
   }
