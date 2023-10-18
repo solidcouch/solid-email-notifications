@@ -19,7 +19,7 @@ const router = new Router()
 router
   .get('/', ctx => {
     ctx.response.body =
-      'Hello world! This is a Solid email notifier. Read more at https://github.com/openHospitalityNetwork/solid-email-notifications'
+      'Hello world! This is a Solid email notifier. Read more at https://github.com/OpenHospitalityNetwork/solid-email-notifications'
   })
   .post(
     '/inbox',
