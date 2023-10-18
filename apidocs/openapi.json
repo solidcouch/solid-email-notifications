@@ -48,7 +48,13 @@
                     "format": "email"
                   }
                 },
-                "required": ["@context", "@type", "actor", "object", "target"],
+                "required": [
+                  "@context",
+                  "@type",
+                  "actor",
+                  "object",
+                  "target"
+                ],
                 "additionalProperties": false
               }
             }
