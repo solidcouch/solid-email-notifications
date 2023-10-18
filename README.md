@@ -36,6 +36,26 @@ yarn start
 
 ### Use
 
+Service API is documented in [OpenAPI schema](./apidocs/openapi.json) (still work in progress). When you run the app with `yarn start`, you'll see the Swagger-UI documentation at `/`.
+
+To integrate this service with person's inbox, the mailer identity needs to be given Read access to that inbox. You can do it via a frontend app, or manually by updating inbox acl.
+
+#### GET /status
+
+See whether the current user has integrated inbox with the service
+
+#### POST /inbox
+
+Integrate person's inbox with the service
+
+#### GET /verify-email
+
+Verify email during integration
+
+#### POST /webhook-receiver
+
+Listen to webhook notifications coming from Solid pod when inbox changes
+
 ## Tests
 
 Run `yarn test`
